@@ -5,9 +5,7 @@ const app: express.Application = express();
 
 const port: number = 3000;
 
-app.get('/hello', (req, res) => {
-    res.send("Express with Typescript");
-})
+app.use(express.json());
 
 app.use('/api/v1/tasks', router);
 
