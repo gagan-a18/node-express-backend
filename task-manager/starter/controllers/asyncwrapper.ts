@@ -5,6 +5,7 @@ const asyncwrapper = (fn: (req: Request, res: Response, next: NextFunction) => P
         try {
             await fn(req, res, next);
         } catch (error) {
+            res.status(500);
             next(error);
         }
     }
