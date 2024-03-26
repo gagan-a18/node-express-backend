@@ -1,9 +1,12 @@
 import express from "express"
-import sendResponse from "./middleware/tasks";
+import { dashboard, login } from "./middleware/tasks";
 
 
 const router: express.Router = express.Router();
 
-router.route('/').get(sendResponse);
+
+router.route('/dashboard').get(dashboard);
+
+router.route('/login').post(login);
 
 export default router;

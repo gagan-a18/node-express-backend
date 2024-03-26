@@ -1,7 +1,9 @@
-import express, { NextFunction } from "express"
+import express, { NextFunction, Request, Response } from "express"
 import router from "./routes/routes";
 import dotenv from "dotenv";
 import notFound from "./routes/middleware/notFound";
+import "express-async-errors";
+import errorHandler from "./routes/middleware/errorHandler";
 
 dotenv.config();
 
@@ -14,6 +16,7 @@ app.use(express.json());
 app.use('/api/v1/basic', router)
 
 app.use(notFound);
+app.use(errorHandler);
 
 const startserver = async () => {
     try {
