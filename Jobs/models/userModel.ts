@@ -8,6 +8,7 @@ interface UserDocument extends Document {
     email: string,
     password: string,
     createJWT: () => void
+    comparePassword: (password: string) => boolean
 }
 
 const UserSchema = new mongoose.Schema({
@@ -25,6 +26,11 @@ UserSchema.pre('save', async function (next) {
 
 UserSchema.methods.createJWT = function () {
     return jwt.sign({ userId: this._id, name: this.name }, `${process.env.JWT_SECRET}`, { expiresIn: "30d" });
+}
+
+UserSchema.methods.comparePassword = async function (userPassword: string) {
+    const isMatch = await bcrypt.compare(userPassword, this.password);
+    return isMatch;
 }
 
 export default mongoose.model<UserDocument>('User', UserSchema);

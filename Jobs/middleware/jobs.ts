@@ -1,7 +1,12 @@
 import { Request, Response } from "express";
+import { JwtPayload } from "jsonwebtoken";
 
-const getAllJobs = (req: Request, res: Response) => {
-    res.send('get All Jobs');
+interface CustomRequest extends Request {
+    user?: JwtPayload;
+}
+
+const getAllJobs = (req: CustomRequest, res: Response) => {
+    res.send(req.user);
 }
 const getJob = (req: Request, res: Response) => {
     res.send('get Job');
