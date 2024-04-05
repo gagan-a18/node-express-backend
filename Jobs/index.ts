@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 import connectDb from "./connection/connectDb";
 import { authRouter, jobRouter } from "./routes/routes";
 import errorHandler from "./errors/errorHandler";
+import tokenAuth from "./middleware/tokenAuth";
 
 
 dotenv.config();
@@ -15,7 +16,7 @@ const port: Number = Number(process.env.PORT) || 3000;
 app.use(express.json());
 
 app.use('/domain/api/v1/auth', authRouter);
-app.use('/domain/api/v1/jobs', jobRouter);
+app.use('/domain/api/v1/jobs', tokenAuth, jobRouter);
 
 app.use(errorHandler);
 
