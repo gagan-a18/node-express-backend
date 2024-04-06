@@ -1,10 +1,9 @@
-import userModel from "../models/userModel";
 import ErrorRequest from "../errors/errorRequest";
 import { NextFunction, Request, Response } from "express";
 import jwt, { JwtPayload } from "jsonwebtoken";
 
 interface CustomRequest extends Request {
-    user?: JwtPayload;
+    user?: {};
 }
 
 const tokenAuth = (req: CustomRequest, res: Response, next: NextFunction) => {
