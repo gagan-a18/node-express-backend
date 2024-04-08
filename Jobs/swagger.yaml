@@ -1,0 +1,25 @@
+openapi: 3.0.0
+info:
+  title: JOBS API
+  contact: {}
+  version: 1.0
+servers:
+  - url: http://localhost:3000/domain/api/v1
+paths:
+  /auth/register:
+    post:
+      tags:
+        - Auth
+      parameters: []
+      requestBody:
+        description: hello
+        content:
+          application/json:
+            schema:
+              example:
+                name: bob
+                email: bob@gmail.com
+                password: secret
+      responses:
+        200:
+          description: ok

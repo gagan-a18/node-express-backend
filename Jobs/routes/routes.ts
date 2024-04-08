@@ -1,9 +1,9 @@
-import express, { Response, Request } from "express";
+import express from "express";
 import { login, register } from "../middleware/authentication";
 import { createJob, deleteJob, getAllJobs, getJob, updateJob } from "../middleware/jobs";
 
-const authRouter: express.Router = express.Router();
 
+const authRouter: express.Router = express.Router();
 const jobRouter: express.Router = express.Router();
 
 authRouter.route('/register').post(register);

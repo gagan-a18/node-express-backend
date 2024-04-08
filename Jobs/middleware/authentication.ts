@@ -2,7 +2,6 @@ import { Request, Response } from "express";
 import userModel from "../models/userModel";
 import ErrorRequest from "../errors/errorRequest";
 
-
 const register = async (req: Request, res: Response) => {
 
     try {
